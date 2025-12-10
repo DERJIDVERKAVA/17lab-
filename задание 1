@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+    struct Color
+    {
+        public int R { get; set; }
+        public int G { get; set; }
+        public int B { get; set; }
+
+        public Color(int R, int G, int B)
+        {
+            this.R = R;
+            this.G = G;
+            this.B = B;
+        }
+
+        public override string ToString()
+        {
+            return $"RGB({R},{G},{B})";
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        Color red = new Color(255, 0, 0);
+        Color green = new Color(0, 255, 0);
+        Color blue = new Color(0, 0, 255);
+        Color customColor = new Color(128, 64, 200);
+
+        Console.WriteLine("Примеры цветов:");
+        Console.WriteLine($"Красный: {red}");
+        Console.WriteLine($"Зеленый: {green}");
+        Console.WriteLine($"Синий: {blue}");
+        Console.WriteLine($"Пользовательский цвет: {customColor}");
+
+        Console.WriteLine("\nИзменение значений:");
+        Color magenta = new Color(255, 0, 255);
+        Console.WriteLine($"Перед изменением: {magenta}");
+
+        magenta = new Color(255, 0, 200); 
+        Console.WriteLine($"После изменения: {magenta}");
+
+        Console.WriteLine("\nМассив цветов:");
+        Color[] colors = new Color[]
+        {
+            new Color(255, 0, 0),
+            new Color(0, 255, 0),
+            new Color(0, 0, 255),
+            new Color(255, 255, 0),
+            new Color(255, 0, 255)
+        };
+
+        foreach (var color in colors)
+        {
+            Console.WriteLine(color);
+        }
+    }
+}
