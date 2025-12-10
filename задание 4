@@ -1,0 +1,58 @@
+using System;
+
+class Program
+{
+    struct Weather
+    {
+        public string City { get; set; }
+        public double Temperature { get; set; }
+        public bool HasData { get; set; }
+
+        public Weather(string city, double temperature)
+        {
+            City = city;
+            Temperature = temperature;
+            HasData = true;
+        }
+
+        public Weather(string city)
+        {
+            City = city;
+            Temperature = 0.0;
+            HasData = false;
+        }
+
+        public override string ToString()
+        {
+            return HasData ? $"{City}: {Temperature}°C" : $"{City}: Нет данных";
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        Weather weather1 = new Weather("Москва", 22.5);
+        Weather weather2 = new Weather("Санкт-Петербург", 18.3);
+        Weather weather3 = new Weather("Новосибирск");
+        Weather weather4 = new Weather("Казань", 25.1);
+        Weather weather5 = new Weather("Владивосток");
+
+        Weather[] weatherData = { weather1, weather2, weather3, weather4, weather5 };
+
+        Console.WriteLine("Прогноз погоды:");
+        Console.WriteLine("=================");
+
+        foreach (var weather in weatherData)
+        {
+            Console.WriteLine(weather);
+        }
+
+        Console.WriteLine("\nГорода с данными о температуре:");
+        foreach (var weather in weatherData)
+        {
+            if (weather.HasData)
+            {
+                Console.WriteLine($"{weather.City} - {weather.Temperature}°C");
+            }
+        }
+    }
+}
